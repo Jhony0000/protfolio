@@ -1,32 +1,3 @@
-<?php
-include("database.php");
-
-if (isset($_POST['name']) && isset($_POST['Email']) && isset($_POST['Subject']) && isset($_POST['Messages'])) {
-    $name = $_POST['name'];
-    $Email = $_POST['Email'];
-    $subject = $_POST['Subject'];
-    $messages = $_POST['Messages'];
-
-    if (!empty($name) && !empty($Email) && !empty($messages)) {
-        if (strlen($messages) <= 30) {
-            echo "<script>
-                         alert('Must be 30 Character')
-                </script>";
-        } else {
-            $sql = "INSERT INTO user (Name,Email,Subject,Messages) VALUES ('$name','$Email','$subject','$messages')";
-            $qury = mysqli_query($con, $sql);
-            echo "<script>
-                         alert('Messages Was Send')
-                </script>";
-        }
-    } else {
-        echo "<script>
-                     alert('Empty')
-            </script>";
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,6 +39,34 @@ if (isset($_POST['name']) && isset($_POST['Email']) && isset($_POST['Subject']) 
 </style>
 
 <body class="bg-light">
+    <?php
+include("database.php");
+
+if (isset($_POST['name']) && isset($_POST['Email']) && isset($_POST['Subject']) && isset($_POST['Messages'])) {
+    $name = $_POST['name'];
+    $Email = $_POST['Email'];
+    $subject = $_POST['Subject'];
+    $messages = $_POST['Messages'];
+
+    if (!empty($name) && !empty($Email) && !empty($messages)) {
+        if (strlen($messages) <= 30) {
+            echo "<script>
+                         alert('Must be 30 Character')
+                </script>";
+        } else {
+            $sql = "INSERT INTO user (Name,Email,Subject,Messages) VALUES ('$name','$Email','$subject','$messages')";
+            $qury = mysqli_query($con, $sql);
+            echo "<script>
+                         alert('Messages Was Send')
+                </script>";
+        }
+    } else {
+        echo "<script>
+                     alert('Empty')
+            </script>";
+    }
+}
+?>
     <!-- nav start  -->
     <nav class="navbar navbar-light  fixed-top  bg-white nav border-bottom">
         <div class="container">
